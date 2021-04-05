@@ -68,10 +68,9 @@ max_exceeded: silent
 variables:
   device_id: !input inovelli_switch
 trigger:
-  - device_id: {{ trigger.event.data.device_id }}
-    domain: hubitat
+  - domain: hubitat
     platform: device
-#condition: "{{ trigger.event.data.device_id == device_id }}"
+condition: "{{ trigger.event.data.device_id == device_id }}"
 #type: held
 #subtype: '2'
 action:
