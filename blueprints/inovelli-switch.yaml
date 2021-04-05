@@ -3,7 +3,7 @@ blueprint:
   description: Inovelli Red Series Switch Buttons from Hubitat.
   domain: automation
   input:
-    homeseer_switch:
+    inovelli_switch:
       name: Inovelli Red Series Switch
       description: "List of available Inovelli Red Series Switch"
       selector:
