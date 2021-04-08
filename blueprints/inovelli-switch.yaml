@@ -60,6 +60,19 @@ blueprint:
       default: []
       selector:
         action: {}
+    ## Paddle Held
+    button_up_6:
+      name: Up/On Held
+      description: "Action to run, when the button is held up."
+      default: []
+      selector:
+        action: {}
+    button_down_6:
+      name: Down/Off Held
+      description: "Action to run, when the button is held down."
+      default: []
+      selector:
+        action: {}
 mode: single
 max_exceeded: silent
 variables:
@@ -104,3 +117,7 @@ action:
       sequence: !input button_up_4
     - conditions: '{{ press_count == 4 and button_id == "held" }}'
       sequence: !input button_down_4
+    - conditions: '{{ press_count == 6 and button_id == "pushed" }}'
+      sequence: !input button_up_6
+    - conditions: '{{ press_count == 6 and button_id == "held" }}'
+      sequence: !input button_down_6
