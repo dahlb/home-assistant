@@ -5,7 +5,7 @@ blueprint:
   input:
     inovelli_switch:
       name: Inovelli Red Series Switch
-      description: "Hubitat device_id os HA integrated inovelli Switch"
+      description: "Hubitat device_id of HA integrated inovelli Switch"
     ## Paddle Press 1 time
     button_up_1:
       name: Up/On press 1x
