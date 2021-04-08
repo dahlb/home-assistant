@@ -76,27 +76,27 @@ action:
     data:
       name: "Device Id"
       message: "{{ trigger.event.data.device_id }}"
-      domain: "Testing"
+      domain: testing
   - service: "logbook.log"
     data:
       name: "Device"
       message: "{{ trigger.event }}"
-      domain: "Testing"
+      domain: testing
   - service: "logbook.log"
     data:
       name: "Button Id (pushed/held)"
       message: "{{ trigger.event.data.type }}"
-      domain: "Testing"
+      domain: testing
   - service: "logbook.log"
     data:
       name: "Button Id (pushed/held)"
       message: "{{ button_id }}"
-      domain: "Testing"
+      domain: testing
   - service: "logbook.log"
     data:
       name: "Press Count"
       message: "{{ press_count }}"
-      domain: "Testing"
+      domain: testing
   - choose:
     - conditions: '{{ button_id == "1" and press_count == "pushed" }}'
       sequence: !input button_up_1
