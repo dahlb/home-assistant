@@ -75,12 +75,7 @@ action:
 #  - service: "logbook.log"
 #    data:
 #      name: "Device"
-#      message: "{{ trigger.event }}"
-#      domain: testing
-#  - service: "logbook.log"
-#    data:
-#      name: "Button Id (pushed/held)"
-#      message: "{{ trigger.event.data.type }}"
+#      message: "{{ trigger.event.data|to_json }}"
 #      domain: testing
 #  - service: "logbook.log"
 #    data:
@@ -93,19 +88,19 @@ action:
 #      message: "{{ press_count }}"
 #      domain: testing
   - choose:
-    - conditions: '{{ button_id == "1" and press_count == "pushed" }}'
+    - conditions: '{{ press_count == "1" and button_id == "pushed" }}'
       sequence: !input button_up_1
-    - conditions: '{{ button_id == "1" and press_count == "held" }}'
+    - conditions: '{{ press_count == "1" and button_id == "held" }}'
       sequence: !input button_down_1
-    - conditions: '{{ button_id == "2" and press_count == "pushed" }}'
+    - conditions: '{{ press_count == "2" and button_id == "pushed" }}'
       sequence: !input button_up_2
-    - conditions: '{{ button_id == "2" and press_count == "held" }}'
+    - conditions: '{{ press_count == "2" and button_id == "held" }}'
       sequence: !input button_down_2
-    - conditions: '{{ button_id == "3" and press_count == "pushed" }}'
+    - conditions: '{{ press_count == "3" and button_id == "pushed" }}'
       sequence: !input button_up_3
-    - conditions: '{{ button_id == "3" and press_count == "held" }}'
+    - conditions: '{{ press_count == "3" and button_id == "held" }}'
       sequence: !input button_down_3
-    - conditions: '{{ button_id == "4" and press_count == "pushed" }}'
+    - conditions: '{{ press_count == "4" and button_id == "pushed" }}'
       sequence: !input button_up_4
-    - conditions: '{{ button_id == "4" and press_count == "held" }}'
+    - conditions: '{{ press_count == "4" and button_id == "held" }}'
       sequence: !input button_down_4
