@@ -67,11 +67,15 @@ variables:
 trigger:
   - platform: event
     event_type: hubitat_event
-condition: "{{ trigger.event.data.device_id == device_id }}"
+#condition: "{{ trigger.event.data.device_id == device_id }}"
 action:
   - variables:
       button_id: "{{ trigger.event.data.type }}"
       press_count: "{{ trigger.event.data.subtype }}"
+  - service: "logbook.log"
+    data:
+      name: "Device Id"
+      message: "{{ trigger.event.data.device_id }}"
   - service: "logbook.log"
     data:
       name: "Button Id (pushed/held)"
