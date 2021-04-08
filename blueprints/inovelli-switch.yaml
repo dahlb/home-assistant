@@ -88,19 +88,19 @@ action:
 #      message: "{{ press_count }}"
 #      domain: testing
   - choose:
-    - conditions: '{{ press_count == "1" and button_id == "pushed" }}'
+    - conditions: '{{ press_count == 1 and button_id == "pushed" }}'
       sequence: !input button_up_1
-    - conditions: '{{ press_count == "1" and button_id == "held" }}'
+    - conditions: '{{ press_count == 1 and button_id == "held" }}'
       sequence: !input button_down_1
-    - conditions: '{{ press_count == "2" and button_id == "pushed" }}'
+    - conditions: '{{ press_count == 2 and button_id == "pushed" }}'
       sequence: !input button_up_2
-    - conditions: '{{ press_count == "2" and button_id == "held" }}'
+    - conditions: '{{ press_count == 2 and button_id == "held" }}'
       sequence: !input button_down_2
-    - conditions: '{{ press_count == "3" and button_id == "pushed" }}'
+    - conditions: '{{ press_count == 3 and button_id == "pushed" }}'
       sequence: !input button_up_3
-    - conditions: '{{ press_count == "3" and button_id == "held" }}'
+    - conditions: '{{ press_count == 3 and button_id == "held" }}'
       sequence: !input button_down_3
-    - conditions: '{{ press_count == "4" and button_id == "pushed" }}'
+    - conditions: '{{ press_count == 4 and button_id == "pushed" }}'
       sequence: !input button_up_4
-    - conditions: '{{ press_count == "4" and button_id == "held" }}'
+    - conditions: '{{ press_count == 4 and button_id == "held" }}'
       sequence: !input button_down_4
