@@ -67,36 +67,31 @@ variables:
 trigger:
   - platform: event
     event_type: hubitat_event
-#condition: "{{ trigger.event.data.device_id == device_id }}"
+condition: "{{ trigger.event.data.device_id == device_id }}"
 action:
   - variables:
-      button_id: "{{ trigger.event.data.type }}"
-      press_count: "{{ trigger.event.data.subtype }}"
-  - service: "logbook.log"
-    data:
-      name: "Device Id"
-      message: "{{ trigger.event.data.device_id }}"
-      domain: testing
-  - service: "logbook.log"
-    data:
-      name: "Device"
-      message: "{{ trigger.event }}"
-      domain: testing
-  - service: "logbook.log"
-    data:
-      name: "Button Id (pushed/held)"
-      message: "{{ trigger.event.data.type }}"
-      domain: testing
-  - service: "logbook.log"
-    data:
-      name: "Button Id (pushed/held)"
-      message: "{{ button_id }}"
-      domain: testing
-  - service: "logbook.log"
-    data:
-      name: "Press Count"
-      message: "{{ press_count }}"
-      domain: testing
+      button_id: "{{ trigger.event.data.attribute }}"
+      press_count: "{{ trigger.event.data.value }}"
+#  - service: "logbook.log"
+#    data:
+#      name: "Device"
+#      message: "{{ trigger.event }}"
+#      domain: testing
+#  - service: "logbook.log"
+#    data:
+#      name: "Button Id (pushed/held)"
+#      message: "{{ trigger.event.data.type }}"
+#      domain: testing
+#  - service: "logbook.log"
+#    data:
+#      name: "Button Id (pushed/held)"
+#      message: "{{ button_id }}"
+#      domain: testing
+#  - service: "logbook.log"
+#    data:
+#      name: "Press Count"
+#      message: "{{ press_count }}"
+#      domain: testing
   - choose:
     - conditions: '{{ button_id == "1" and press_count == "pushed" }}'
       sequence: !input button_up_1
