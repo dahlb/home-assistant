@@ -1,11 +1,15 @@
 blueprint:
-  name: Inovelli Red Series Switch Buttons from Hubitat 
-  description: Inovelli Red Series Switch Buttons from Hubitat.
+  name: Inovelli Red Series Switch Buttons from ZWaveJS 
+  description: Inovelli Red Series Switch Buttons from ZWaveJS.
   domain: automation
   input:
     inovelli_switch:
       name: Inovelli Red Series Switch
-      description: "Hubitat device_id of HA integrated inovelli Switch"
+      description: "ZWaveJS node of HA integrated inovelli Switch"
+      selector:
+        entity:
+          domain: switch
+          device_class: motion
     ## Paddle Press 1 time
     button_up_1:
       name: Up/On press 1x
@@ -34,45 +38,6 @@ blueprint:
       default: []
       selector:
         action: {}
-    ## Paddle Press 3 times
-    button_up_3:
-      name: Up/On press 3x
-      description: "Action to run, when the button is pressed 3x up."
-      default: []
-      selector:
-        action: {}
-    button_down_3:
-      name: Down/Off press 3x
-      description: "Action to run, when the button is pressed 3x down."
-      default: []
-      selector:
-        action: {}
-    ## Paddle Press 4 times
-    button_up_4:
-      name: Up/On press 4x
-      description: "Action to run, when the button is pressed 4x up."
-      default: []
-      selector:
-        action: {}
-    button_down_4:
-      name: Down/Off press 4x
-      description: "Action to run, when the button is pressed 4x down."
-      default: []
-      selector:
-        action: {}
-    ## Paddle Held
-    button_up_6:
-      name: Up/On Held
-      description: "Action to run, when the button is held up."
-      default: []
-      selector:
-        action: {}
-    button_down_6:
-      name: Down/Off Held
-      description: "Action to run, when the button is held down."
-      default: []
-      selector:
-        action: {}
 mode: single
 max_exceeded: silent
 variables:
@@ -83,8 +48,8 @@ trigger:
 condition: "{{ trigger.event.data.device_id == device_id }}"
 action:
   - variables:
-      button_id: "{{ trigger.event.data.attribute }}"
-      press_count: "{{ trigger.event.data.value }}"
+      button_id: "{{ trigger.event.data.property_key }}"
+      press_type: "{{ trigger.event.data.value }}"
 #  - service: "logbook.log"
 #    data:
 #      name: "Device"
@@ -101,23 +66,11 @@ action:
 #      message: "{{ press_count }}"
 #      domain: testing
   - choose:
-    - conditions: '{{ press_count == 1 and button_id == "pushed" }}'
+    - conditions: '{{ button_id == "002" and press_type == "KeyPressed" }}'
       sequence: !input button_up_1
-    - conditions: '{{ press_count == 1 and button_id == "held" }}'
+    - conditions: '{{ button_id == "001" and press_type == "KeyPressed" }}'
       sequence: !input button_down_1
-    - conditions: '{{ press_count == 2 and button_id == "pushed" }}'
+    - conditions: '{{ button_id == "002" and press_type == "KeyPressed2x" }}'
       sequence: !input button_up_2
-    - conditions: '{{ press_count == 2 and button_id == "held" }}'
+    - conditions: '{{ button_id == "001" and press_type == "KeyPressed2x" }}'
       sequence: !input button_down_2
-    - conditions: '{{ press_count == 3 and button_id == "pushed" }}'
-      sequence: !input button_up_3
-    - conditions: '{{ press_count == 3 and button_id == "held" }}'
-      sequence: !input button_down_3
-    - conditions: '{{ press_count == 4 and button_id == "pushed" }}'
-      sequence: !input button_up_4
-    - conditions: '{{ press_count == 4 and button_id == "held" }}'
-      sequence: !input button_down_4
-    - conditions: '{{ press_count == 6 and button_id == "pushed" }}'
-      sequence: !input button_up_6
-    - conditions: '{{ press_count == 6 and button_id == "held" }}'
-      sequence: !input button_down_6
