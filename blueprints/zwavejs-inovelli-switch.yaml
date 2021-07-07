@@ -9,7 +9,6 @@ blueprint:
       selector:
         entity:
           domain: switch
-          device_class: motion
     ## Paddle Press 1 time
     button_up_1:
       name: Up/On press 1x
