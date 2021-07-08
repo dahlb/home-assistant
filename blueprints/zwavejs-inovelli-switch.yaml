@@ -36,6 +36,18 @@ blueprint:
       default: []
       selector:
         action: {}
+    button_up_3:
+      name: Up/On press 3x
+      description: Action to run, when the button is pressed 3x up.
+      default: []
+      selector:
+        action: {}
+    button_down_3:
+      name: Down/Off press 3x
+      description: Action to run, when the button is pressed 3x down.
+      default: []
+      selector:
+        action: {}
   source_url: https://github.com/dahlb/home-assistant/blob/main/blueprints/zwavejs-inovelli-switch.yaml
 mode: single
 max_exceeded: silent
