@@ -59,6 +59,6 @@ action:
   - conditions: '{{ button_id == "001" and press_type == "KeyPressed2x" }}'
     sequence: !input 'button_down_2'
   - conditions: '{{ button_id == "002" and press_type == "KeyPressed3x" }}'
-    sequence: !input 'button_up_2'
+    sequence: !input 'button_up_3'
   - conditions: '{{ button_id == "001" and press_type == "KeyPressed3x" }}'
-    sequence: !input 'button_down_2'
+    sequence: !input 'button_down_3'
