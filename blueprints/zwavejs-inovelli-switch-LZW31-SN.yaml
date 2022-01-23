@@ -156,7 +156,7 @@ action:
       sequence: !input button_a5
     - conditions: '{{ button_id == "001" and press_count == "KeyPressed5x" }}'
       sequence: !input button_b5
-    - conditions: '{{ button_id == "004" and press_count == "0" }}'
+    - conditions: '{{ button_id == "004" and press_count == 0 }}'
       sequence: !input button_aux_up
-    - conditions: '{{ button_id == "005" and press_count == "0" }}'
+    - conditions: '{{ button_id == "005" and press_count == 0 }}'
       sequence: !input button_aux_down
